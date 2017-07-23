@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>hatch</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="headBox">
+		<div class="header">
+			<div class="logo">
+				<img src="img/logo.jpg">
+			</div>
+			<div class="nav" id="nav">
+				<ul>
+					<li><a href="index.html">首 &nbsp;页</a></li>
+					<li><a href="product.html">产品中心</a></li>
+					<li><a href="progress.html">紫龙发展</a></li>
+					<li class="navR"><a href="#">产品联合孵化</a></li>
+					<li><a href="join.html">加入紫龙</a></li>
+					<li><a href="service.html">客服中心</a></li>
+					<li><a href="reload.html">充 &nbsp;值</a></li>
+				</ul>
+			</div>
+			<div class="loginWrap">
+					<a href="#" name="login"><span>登录 </span></a>
+					<a href="#" name="regi"><span>&nbsp;注册</span></a>
+			</div>
+		</div>
+	</div>
+	<div class="hatch">
+		<div class="hatch01">
+			<img src="img/hatch.jpg">
+		</div>
+		<div class="hatch02">
+			<img src="img/hatch02.jpg">
+		</div>
+		<div class="hatch03">
+			<div class="dbl">
+				<img src="img/hatch03.jpg">
+				<div class="dbl-1">
+					<img src="img/hatch3-1.jpg">
+				</div>
+			</div>
+		</div>
+		<div class="hatch04" id="hatch04">
+			<div class="support">
+				<img id = "su01" class="su01" src="img/support1.png">
+				<img id = "su02" class="su02" src="img/support2.png">
+				<img id = "su03" class="su03" src="img/support3.png">
+				<img id = "su04" class="su04" src="img/support4.png">
+				<img id = "su05" class="su05" src="img/support5.png">
+				<img id = "su06" class="su06" src="img/support6.png">
+				<img class="su07" src="img/support-word.png">
+			</div>
+		</div>
+		<div class="hatch05">
+			<img src="img/hatch05.jpg">
+		</div>
+		<div class="hatch06">
+			<img src="img/hatch06.jpg">
+		</div>
+	</div>
+	<div class="footer">
+		<div class="footBox">
+			<div class="footwrap">
+				<div class="footLogo">
+					<img src="img/logo.jpg">
+				</div>
+				<div class="text">
+					<ul>
+						<li><a href="#">公司简介&nbsp;&nbsp;&nbsp; </a>|</li>
+						<li><a href="#">客服中心&nbsp;&nbsp;&nbsp; </a>|</li>
+						<li><a href="#">人才招聘&nbsp;&nbsp;&nbsp; </a>|</li>
+						<li><a href="#">家长监护&nbsp;&nbsp;&nbsp; </a></li>
+					</ul>
+					<div class="detail">
+						<p>ICP备案号：京ICP备15063824号&nbsp;&nbsp;&nbsp;联系电话：010-53653507</p>
+						<p>注册地址：北京市石景山区实兴大街30号院3号楼8层8051室</p>
+						<p>经营地址：北京市东城区和平里东街民旺园31号强佑大厦6层</p>
+						<p>北京紫御科技有限公司版权所有 COPYRIGHT © 2015 ZLONGAME.COM LIMITED. ALL RIGHTS RESERVED.</p>
+					</div>
+					<div class="check">
+						<a href="#">
+							<img src="img/gover.png">
+							京公网安备 11010102001816号&nbsp;&nbsp;
+						</a>
+						<a href="#">
+							<p>京ICP证160189号&nbsp;&nbsp;	</p>
+						</a>
+						<a href="#">
+							<img src="img/gover2.png">
+							京网文[2016]0532-006号&nbsp;&nbsp;
+						</a>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	<script>
+		window.onload=function(){
+			hat();
+		}
+
+		function hat(){
+			var hatch = document.getElementById('hatch04');
+			var s1 = document.getElementById('su01');
+			var s2 = document.getElementById('su02');
+			var s3 = document.getElementById('su03');
+			var s4 = document.getElementById('su04');
+			var s5 = document.getElementById('su05');
+			var s6 = document.getElementById('su06');
+			hatch.onmouseover = function(){
+				move(s1,'right',720);
+				move(s2,'right',840)
+				move(s3,'right',960)
+				move(s4,'right',1080)
+				move(s5,'right',1200)
+				move(s6,'right',1320)
+			}
+		}
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr] ;
+			}else {
+				return getComputedStyle(obj,false)[attr] ;
+			}
+		}
+
+		function move(obj,attr,aim,fn){
+		 	clearInterval(obj.timer);
+		 	obj.timer = setInterval(function(){
+		 		var gg = '';
+		 		if(attr == 'opacity'){
+		 			gg = Math.round(parseFloat(getStyle(obj,'opacity'))*100);
+		 		}else {
+		 			gg = parseInt(getStyle(obj,attr));
+		 		}
+		 		//判断传入的属性
+
+		 		var speed = (aim - gg)/6 ;
+		 		speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed) ;
+		 		//判断速度
+
+		 		if(gg == aim ){
+		 			clearInterval(obj.timer);
+		 			if(fn){
+		 				fn();
+		 			}
+		 		}
+		 		//判断结束条件
+
+		 		if(attr == 'opacity'){
+		 			obj.style['opacity'] = (gg + speed)/100 ;
+		 		}else {
+		 			obj.style[attr] = gg + speed + "px" ;
+		 		}
+		 		//判断定时器执行条件
+		 	},20)
+		}
+
+		// function　bar(){
+		// 	var l = document.getElementById('nav').getElementsByTagName('li');
+		// 	for(var i = 0 ; i < l.length ; i++){
+		// 		l[i].index = i ;
+		// 		l[i].onclick = function(){
+		// 			for(var i = 0 ; i < l.length ; i++){
+		// 				l[i].className = "" ;
+		// 			}
+		// 			l[this.index].className = "navR";
+		// 		}
+		// 	}
+		// }
+	</script>
+</body>
+</html>
